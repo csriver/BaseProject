@@ -6,7 +6,7 @@
     <data>
         <variable
             name="dataBean"
-            type="com.base.pj.bean.DataBean" />
+            type="test.bean.DataBean" />
 
     </data>
    <LinearLayout

@@ -1,4 +1,4 @@
-package com.base.pj;
+package test;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -8,10 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.base.pj.bean.DataBean;
+import com.base.pj.R;
+import test.bean.DataBean;
 import com.base.pj.databinding.ActivityEventBinding;
-import com.base.pj.event.StickyEvent;
-import com.base.pj.event.TestEvent;
+import test.event.StickyEvent;
+import test.event.TestEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -24,7 +25,7 @@ public class EventActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= DataBindingUtil.setContentView(this,R.layout.activity_event);
+        binding= DataBindingUtil.setContentView(this, R.layout.activity_event);
 
         //注册EventBus
         EventBus.getDefault().register(this);

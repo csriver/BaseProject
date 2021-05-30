@@ -1,4 +1,4 @@
-package lib.net;
+package test;
 
 import java.util.Map;
 
@@ -19,7 +19,7 @@ import retrofit2.http.Query;
  * Created by jcs on 2021/5/26.
  * Describe
  */
-public interface API {
+public interface TestAPI {
     /**https://api.apiopen.top/getJoke?page=1&count=2&type=video
      * 获取笑话列表
      * @return

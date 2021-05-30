@@ -1,4 +1,4 @@
-package com.base.pj;
+package test;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -10,10 +10,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import test.EventActivity;
+import com.base.pj.R;
 import test.bean.DataBean;
-import com.base.pj.databinding.ActivityMainBinding;
-import test.event.TestEvent;
+
+import com.base.pj.databinding.ActivityTestBinding;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -29,19 +29,18 @@ import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import lib.bus.LiveDataBus;
-import test.TestAPI;
 import lib.net.RetrofitHelp;
 import lib.util.JLog;
+import test.event.TestEvent;
 
-public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
+public class TestActivity extends AppCompatActivity {
+    ActivityTestBinding binding;
     private DataBean dataBean;
     int i = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        JLog.isDebug=true;
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_test);
         dataBean=new DataBean();
         binding.setDataBean(dataBean);
         binding.setLifecycleOwner(this);
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 dataBean.setState("粘性事件");
                 LiveDataBus.getDefault().with("dataSticky", DataBean.class).postValue(dataBean);
 
-                Intent intent = new Intent(MainActivity.this, EventActivity.class);
+                Intent intent = new Intent(TestActivity.this, EventActivity.class);
                 startActivity(intent);
             }
         });
@@ -99,36 +98,36 @@ public class MainActivity extends AppCompatActivity {
                         .request("https://api.apiopen.top/", TestAPI.class)
                         .getJoke("1","2","video");
                 observable .map(new Function<Object, Object>() {
-                        @Override
-                        public Object apply(Object o) throws Throwable {
-                            //JLog.i("RetrofitHelp","apply:" + o.toString());
-                            return o;
-                        }
-                 })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new io.reactivex.rxjava3.core.Observer<Object>() {
                     @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-                        JLog.d("RetrofitHelp","onSubscribe:" + d.toString());
+                    public Object apply(Object o) throws Throwable {
+                        //JLog.i("RetrofitHelp","apply:" + o.toString());
+                        return o;
                     }
+                })
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new io.reactivex.rxjava3.core.Observer<Object>() {
+                            @Override
+                            public void onSubscribe(@NonNull Disposable d) {
+                                JLog.d("RetrofitHelp","onSubscribe:" + d.toString());
+                            }
 
-                    @Override
-                    public void onNext(@NonNull Object objects) {
-                        JLog.d("RetrofitHelp","onNext:" + objects.toString());
-                    }
+                            @Override
+                            public void onNext(@NonNull Object objects) {
+                                JLog.d("RetrofitHelp","onNext:" + objects.toString());
+                            }
 
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        JLog.d("RetrofitHelp","onSubscribe:" + e.getMessage());
-                        e.printStackTrace();
-                    }
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                                JLog.d("RetrofitHelp","onSubscribe:" + e.getMessage());
+                                e.printStackTrace();
+                            }
 
-                    @Override
-                    public void onComplete() {
-                        JLog.d("RetrofitHelp","onComplete:" );
-                    }
-                });
+                            @Override
+                            public void onComplete() {
+                                JLog.d("RetrofitHelp","onComplete:" );
+                            }
+                        });
 
 
             }

@@ -1,4 +1,4 @@
-package com.base.pj.bean;
+package test.bean;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;

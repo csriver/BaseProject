@@ -1,4 +1,4 @@
-package com.base.pj.event;
+package test.event;
 
 /**
  * Created by jcs on 2021/5/25.
