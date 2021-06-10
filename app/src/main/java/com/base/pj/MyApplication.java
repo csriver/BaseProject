@@ -8,7 +8,7 @@ import lib.util.JLog;
  * Created by jcs on 2021/5/30.
  * Describe
  */
-class MyApplication extends Application {
+public class MyApplication extends Application {
     private MyApplication instance;
 
     @Override
