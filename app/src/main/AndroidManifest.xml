@@ -17,14 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BaseProject"
         android:usesCleartextTraffic="true">
-        <activity android:name=".fun.start.WelcomeActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask"
+            />
         <activity
             android:name=".base.BaseActivity"
             android:label="@string/title_activity_base"
             android:theme="@style/Theme.BaseProject.NoActionBar" />
         <activity android:name="test.TestActivity" />
         <activity android:name="test.EventActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="test.RoomActivity"/>
+        <activity android:name=".fun.start.WelcomeActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

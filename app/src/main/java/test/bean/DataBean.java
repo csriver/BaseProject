@@ -3,7 +3,6 @@ package test.bean;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
-import com.base.pj.BR;
 
 /**
  * Created by jcs on 2021/5/25.

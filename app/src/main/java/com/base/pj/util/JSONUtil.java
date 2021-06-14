@@ -1,6 +1,8 @@
 package com.base.pj.util;
 
 
+import android.text.TextUtils;
+
 import com.base.pj.model.UserInfo;
 import com.base.pj.model.DeviceInfo;
 import com.google.gson.Gson;
@@ -20,19 +22,19 @@ public class JSONUtil {
     /**
      * @return 获取设备信息
      */
-    public static DeviceInfo getDeviceInfo(){
-        byte[] data = FileUtil.getStringFromApp(PACKAGE_NAME,"deviceInfo.txt");
-        if(data==null){
+    public static DeviceInfo getDeviceInfoFile(){
+        String data = FileUtil.getStringFromApp(PACKAGE_NAME,"deviceInfo.txt");
+        if(TextUtils.isEmpty(data)){
             return null;
         }
         Gson gson = new Gson();
-        return gson.fromJson(Arrays.toString(data),DeviceInfo.class);
+        return gson.fromJson(data,DeviceInfo.class);
     }
 
     /**
      * @param deviceInfo 保存设备信息
      */
-    public static void saveDeviceInfo(DeviceInfo deviceInfo){
+    public static void saveDeviceInfoFile(DeviceInfo deviceInfo){
         if(deviceInfo==null){
             return;
         }
@@ -44,12 +46,12 @@ public class JSONUtil {
      * @return 获取用户信息
      */
     public static UserInfo getUserInfo(){
-        byte[] data = FileUtil.getStringFromApp(PACKAGE_NAME,"userInfo.txt");
-        if(data==null){
+        String data = FileUtil.getStringFromApp(PACKAGE_NAME,"userInfo.txt");
+        if(TextUtils.isEmpty(data)){
             return null;
         }
         Gson gson = new Gson();
-        return gson.fromJson(Arrays.toString(data), UserInfo.class);
+        return gson.fromJson(data, UserInfo.class);
     }
 
     /**

@@ -63,4 +63,10 @@ dependencies {
 
     implementation 'pub.devrel:easypermissions:3.0.0'
 
+    def room_version = "2.3.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$room_version"
+
 }

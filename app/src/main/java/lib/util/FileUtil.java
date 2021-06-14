@@ -8,6 +8,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 /**
  * Describe
@@ -16,16 +18,19 @@ public class FileUtil {
 
 
     /**
-     * 从APP内部读取文件
+     * 从APP内部读取字符串
      * @param packageName
      * @param fileName
      * @return
      */
-    public static byte[] getStringFromApp(String packageName,String fileName){
+    public static String getStringFromApp(String packageName,String fileName){
         String folderPath = "data/data/" + packageName + "/MyData";
         File file = new File(folderPath, fileName);
         if (!file.exists()) {
             return null;
+        }
+        if(file.length() == 0){
+            return "";
         }
         byte[] data = new byte[(int)file.length()];
         try {
@@ -40,7 +45,7 @@ public class FileUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return data;
+        return new String(data, StandardCharsets.UTF_8);
     }
 
     /**

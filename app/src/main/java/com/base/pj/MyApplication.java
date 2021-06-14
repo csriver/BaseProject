@@ -2,6 +2,8 @@ package com.base.pj;
 
 import android.app.Application;
 
+import com.base.pj.util.RoomUtil;
+
 import lib.util.JLog;
 
 /**
@@ -23,6 +25,7 @@ public class MyApplication extends Application {
      */
     private void initConfig() {
         JLog.isDebug = true;
+        RoomUtil.init(this);
     }
 
     public MyApplication getInstance() {

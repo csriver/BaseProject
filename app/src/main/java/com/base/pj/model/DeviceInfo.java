@@ -8,7 +8,7 @@ package com.base.pj.model;
  */
 public class DeviceInfo {
     private String androidId;
-
+    //String androidId = Settings.System.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
     public String getAndroidId() {
         return androidId;
     }
