@@ -22,4 +22,53 @@
     <style name="Theme.BaseProject.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.BaseProject.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- 自定义进度条 继承系统的small进度条样式 -->
+    <style name="style_loading_pb" parent="@android:style/Widget.ProgressBar.Small">
+        <!-- 定义进度条的drawable -->
+        <item name="android:indeterminateDrawable">@drawable/loading_anim</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="closeDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+    <style name="uncloseDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
+    <style name="mainTabLayoutStyle" parent="Base.Widget.Design.TabLayout">
+        <item name="tabBackground">@color/white</item>
+        <item name="tabIndicatorColor">@color/blue_dark</item>
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabSelectedTextColor">@color/blue_dark</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+    <style name="homeTabLayoutStyle" parent="Base.Widget.Design.TabLayout">
+        <item name="tabBackground">@color/blue_dark</item>
+        <item name="tabIndicatorColor">@color/white</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+        <item name="tabTextColor">@color/gray_a</item>
+        <item name="android:textSize">10sp</item>
+        <item name="animationMode">fade</item>
+    </style>
 </resources>

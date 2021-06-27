@@ -1,0 +1,11 @@
+
+syntax = "proto3";
+option java_package = "com.base.pj";
+message gps_data {
+    int64 id = 1;
+    string terminalId = 2;
+    string dataTime = 3;
+    double lon = 4;
+    float speed = 6;
+    int32 gpsStatus = 9;
+}

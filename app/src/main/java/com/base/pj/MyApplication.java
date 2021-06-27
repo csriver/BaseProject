@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.base.pj.util.RoomUtil;
 
+import lib.net.RetrofitHelp;
 import lib.util.JLog;
 
 /**
@@ -11,7 +12,7 @@ import lib.util.JLog;
  * Describe
  */
 public class MyApplication extends Application {
-    private MyApplication instance;
+    private static MyApplication instance;
 
     @Override
     public void onCreate() {
@@ -20,15 +21,26 @@ public class MyApplication extends Application {
         initConfig();
     }
 
+    public static MyApplication getInstance() {
+        return instance;
+    }
+
     /**
-     * 初始化配置
+     * 初始化APP配置
      */
     private void initConfig() {
         JLog.isDebug = true;
-        RoomUtil.init(this);
+        RetrofitHelp.isDebug=true;
+        RoomUtil.init(instance);
     }
 
-    public MyApplication getInstance() {
-        return instance;
+
+    /**
+     * 初始化三方SDK
+     */
+    public void initSDK(){
+
     }
+
+
 }

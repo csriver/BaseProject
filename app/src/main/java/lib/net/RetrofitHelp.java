@@ -36,7 +36,7 @@ public class RetrofitHelp {
     public static boolean isDebug = false;
 
     private static RetrofitHelp retrofitHelp;
-    public static RetrofitHelp get(){
+    public static RetrofitHelp getInstance(){
         if(retrofitHelp==null){
             retrofitHelp=new RetrofitHelp();
         }
@@ -53,6 +53,9 @@ public class RetrofitHelp {
                 .create(service);
     }
 
+    /**
+     * @return
+     */
     public Gson getGson(){
         return  new GsonBuilder()
                 .setDateFormat(FormatUtil.dateTime())
@@ -60,6 +63,9 @@ public class RetrofitHelp {
                 .create();
     }
 
+    /**
+     * @return
+     */
     public OkHttpClient getOKHttpClient() {
         return new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)
@@ -70,7 +76,6 @@ public class RetrofitHelp {
                 .addInterceptor(new LogInterceptor())
                 .build();
     }
-
 
     /**
      * 日志拦截器
@@ -118,5 +123,9 @@ public class RetrofitHelp {
             }
             return chain.proceed(request);
         }
+    }
+
+    public interface NetListener{
+
     }
 }

@@ -6,7 +6,7 @@ package com.base.pj.model;
  * @Author: CS
  * @Description:设备信息
  */
-public class DeviceInfo {
+public class DeviceInfo extends BaseModel{
     private String androidId;
     //String androidId = Settings.System.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
     public String getAndroidId() {

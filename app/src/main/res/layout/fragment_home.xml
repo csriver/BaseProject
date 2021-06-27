@@ -2,63 +2,59 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-        <variable
-            name="dataBean"
-            type="test.bean.DataBean" />
-
-    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/layout_mainhome_vp"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:contentScrim="?attr/colorAccent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/home_ivp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never" />
+
+                <LinearLayout
+                    android:id="@+id/home_ivp_indicate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+            <include
+                android:id="@+id/home_title_layout"
+                layout="@layout/main_fragment_title_bar" />
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/hello"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{dataBean.name}"
-            />
-
-        <TextView
-            android:id="@+id/state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{dataBean.state}"
-            />
-
-        <Button
-            android:id="@+id/button_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="打开新页面"
-            />
-        <Button
-            android:id="@+id/button_sticky"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="发送sticky事件"
-            />
-        <TextView
-            android:id="@+id/tv_live"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            />
-
-        <TextView
-            android:id="@+id/tv_event"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            />
-        <TextView
-            android:id="@+id/tv_sticky"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            />
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="一天三碗毒鸡汤"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textColor="@color/blue_dark"
+            android:background="@color/gray_f"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_d"/>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/home_joke_vp"
+            android:layout_width="match_parent"
+            android:background="@color/blue_light"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:overScrollMode="never" />
     </LinearLayout>
-
 </layout>

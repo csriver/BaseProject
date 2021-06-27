@@ -10,10 +10,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.base.pj.Gps;
 import com.base.pj.R;
+
+import lib.net.NetAPI;
+import lib.util.FileUtil;
 import test.bean.DataBean;
 
 import com.base.pj.databinding.ActivityTestBinding;
+import com.google.protobuf.InvalidProtocolBufferException;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -94,40 +99,7 @@ public class TestActivity extends AppCompatActivity {
                 //http://gank.io/api/data/Android/10/1
                 //https://api.apiopen.top/getJoke?page=1&count=2&type=video
                 RetrofitHelp.isDebug = false;
-                Observable<Object> observable=  RetrofitHelp.get()
-                        .request("https://api.apiopen.top/", TestAPI.class)
-                        .getJoke("1","2","video");
-                observable .map(new Function<Object, Object>() {
-                    @Override
-                    public Object apply(Object o) throws Throwable {
-                        //JLog.i("RetrofitHelp","apply:" + o.toString());
-                        return o;
-                    }
-                })
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new io.reactivex.rxjava3.core.Observer<Object>() {
-                            @Override
-                            public void onSubscribe(@NonNull Disposable d) {
-                                JLog.d("RetrofitHelp","onSubscribe:" + d.toString());
-                            }
 
-                            @Override
-                            public void onNext(@NonNull Object objects) {
-                                JLog.d("RetrofitHelp","onNext:" + objects.toString());
-                            }
-
-                            @Override
-                            public void onError(@NonNull Throwable e) {
-                                JLog.d("RetrofitHelp","onSubscribe:" + e.getMessage());
-                                e.printStackTrace();
-                            }
-
-                            @Override
-                            public void onComplete() {
-                                JLog.d("RetrofitHelp","onComplete:" );
-                            }
-                        });
 
 
             }
@@ -168,6 +140,22 @@ public class TestActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void protobuf(){
+        Gps.gps_data.Builder build =  Gps.gps_data.newBuilder();
+        build.setId(1);
+        build.setDataTime("20191018105706");
+        Gps.gps_data info = build.build();
+        byte[] bt = info.toByteArray();
+        System.out.println(bt);
+        try {
+            info =  Gps.gps_data.parseFrom(FileUtil.getByteFromApp("p"));
+            FileUtil.saveByteToApp("p",bt,false);
+            System.out.println(info);
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

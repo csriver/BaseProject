@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/main_nv_home"
+        android:icon="@drawable/main_bottom_nav_home_bg"
+        android:title="首页"/>
+    <item
+        android:id="@+id/main_nv_gether"
+        android:icon="@drawable/main_bottom_nav_gether_bg"
+        android:title="集合"/>
+    <item
+        android:id="@+id/mian_nv_customer"
+        android:icon="@drawable/main_bottom_nav_customer_bg"
+        android:title="自选"/>
+    <item
+        android:id="@+id/mian_nv_my"
+        android:icon="@drawable/main_bottom_nav_my_bg"
+        android:title="我的"/>
+</menu>

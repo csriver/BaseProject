@@ -6,7 +6,7 @@ package com.base.pj.model;
  * @Author: CS
  * @Description:用户信息
  */
-public class UserInfo {
+public class UserInfo extends BaseModel{
     private String name;
     private String phone;
     private String id;

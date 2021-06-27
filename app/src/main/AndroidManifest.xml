@@ -19,6 +19,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".MainActivity"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             />
         <activity
             android:name=".base.BaseActivity"
@@ -27,8 +28,7 @@
         <activity android:name="test.TestActivity" />
         <activity android:name="test.EventActivity" />
         <activity android:name="test.RoomActivity"/>
-        <activity android:name=".fun.start.WelcomeActivity"
-            android:launchMode="singleTop">
+        <activity android:name=".fun.start.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.protobuf'
 }
 
 android {
@@ -8,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.base.pj"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -28,6 +29,40 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    sourceSets {//protobuf
+        main {
+            proto {// 定义proto文件目录
+                srcDir 'src/main/proto'
+                include '*.proto'
+            }
+            java {
+                srcDir 'src/main/java'
+            }
+        }
+    }
+}
+
+
+//protobuf构建task
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.10.0'
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+            task.builtins {
+                java {}
+                // Add cpp output without any option.
+                // DO NOT omit the braces if you want this builtin to be added.
+            }
+        }
+    }
+    //生成目录
+    generatedFilesBaseDir = "$projectDir/src/generated"
 }
 
 dependencies {
@@ -51,22 +86,35 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
+    //eventbus
     implementation 'org.greenrobot:eventbus:3.1.1'
-
+    //gson
     implementation 'com.google.code.gson:gson:2.8.6'
-
-    //glide
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-
+    //recyclerview
     implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    //cardview
     implementation 'androidx.cardview:cardview:1.0.0'
-
+    //easypermission
     implementation 'pub.devrel:easypermissions:3.0.0'
-
+    //room
     def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     // optional - Guava support for Room, including Optional and ListenableFuture
     implementation "androidx.room:room-guava:$room_version"
 
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    // ViewPager 2 需要使用 RecycleView 的 adapter
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    //protobuf
+    implementation 'com.google.protobuf:protobuf-java:3.10.0'
+    implementation 'com.google.protobuf:protobuf-java-util:3.10.0'
+
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0-beta01"
 }

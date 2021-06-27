@@ -18,12 +18,12 @@ import lib.util.FileUtil;
  * @Description:
  */
 public class JSONUtil {
-    private static final String PACKAGE_NAME="com.base.pj";
+
     /**
      * @return 获取设备信息
      */
     public static DeviceInfo getDeviceInfoFile(){
-        String data = FileUtil.getStringFromApp(PACKAGE_NAME,"deviceInfo.txt");
+        String data = FileUtil.getStringFromApp("deviceInfo.txt");
         if(TextUtils.isEmpty(data)){
             return null;
         }
@@ -39,14 +39,14 @@ public class JSONUtil {
             return;
         }
         Gson gson = new Gson();
-        FileUtil.saveStringToApp(PACKAGE_NAME,"deviceInfo.txt",gson.toJson(deviceInfo),true);
+        FileUtil.saveStringToApp("deviceInfo.txt",gson.toJson(deviceInfo),true);
     }
 
     /**
      * @return 获取用户信息
      */
     public static UserInfo getUserInfo(){
-        String data = FileUtil.getStringFromApp(PACKAGE_NAME,"userInfo.txt");
+        String data = FileUtil.getStringFromApp("userInfo.txt");
         if(TextUtils.isEmpty(data)){
             return null;
         }
@@ -62,6 +62,6 @@ public class JSONUtil {
             return;
         }
         Gson gson = new Gson();
-        FileUtil.saveStringToApp(PACKAGE_NAME,"userInfo.txt",gson.toJson(userInfo),true);
+        FileUtil.saveStringToApp("userInfo.txt",gson.toJson(userInfo),true);
     }
 }

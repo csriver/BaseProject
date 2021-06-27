@@ -6,6 +6,6 @@ package com.base.pj.net;
  */
 public class BaseUrl {
 
-    public static String homeUrl="";
+    public static String url="http://api.btstu.cn/";
 
 }
